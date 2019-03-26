@@ -25,6 +25,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
         );
     }
-
-
+    //sem este código, o voltar retorna à launcher activity
+    @Override
+    public void onBackPressed() {
+            moveTaskToBack(true); //app fica em 2º plano
+    }
 }
