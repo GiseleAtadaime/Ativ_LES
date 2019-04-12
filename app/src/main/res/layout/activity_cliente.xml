@@ -6,14 +6,13 @@
     android:layout_height="match_parent">
 
 
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbarAlwaysDrawHorizontalTrack="false"
         android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbars="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".ClienteActivity">
 
         <TextView
@@ -70,10 +69,12 @@
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="16dp" />
+            app:layout_constraintGuide_percent="0.04136253"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/txtCNPJ"
@@ -83,6 +84,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:text="28.080.719/0001-07"
+            android:textAlignment="textEnd"
             app:layout_constraintEnd_toStartOf="@+id/guideline2"
             app:layout_constraintStart_toEndOf="@+id/txtCodigo"
             app:layout_constraintTop_toBottomOf="@+id/srcPesquisa" />
@@ -149,7 +151,7 @@
             android:id="@+id/txtCidade"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
             android:text="são José dos Campos"
@@ -170,10 +172,12 @@
 
         <android.support.constraint.Guideline
             android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="391dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.96107054" />
 
         <TextView
             android:id="@+id/txtCep"
@@ -209,27 +213,25 @@
             android:id="@+id/lblBanco"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="52dp"
             android:layout_marginTop="12dp"
             android:text="Banco:"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="@+id/lblAgencia"
             app:layout_constraintTop_toBottomOf="@+id/txtComplemento" />
 
         <TextView
             android:id="@+id/lblAgencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
             android:layout_marginTop="16dp"
             android:text="Agência"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
+            app:layout_constraintEnd_toEndOf="@+id/lblConta"
             app:layout_constraintTop_toBottomOf="@+id/lblBanco" />
 
         <TextView
             android:id="@+id/lblConta"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="12dp"
             android:text="Conta:"
             app:layout_constraintStart_toStartOf="@+id/guideline"
@@ -239,14 +241,12 @@
             android:id="@+id/txtBanco"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp"
             android:text="Caixa"
             android:textAlignment="center"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.51"
-            app:layout_constraintStart_toEndOf="@+id/lblBanco"
+            app:layout_constraintEnd_toEndOf="@+id/txtAgencia"
+            app:layout_constraintHorizontal_bias="0.384"
+            app:layout_constraintStart_toStartOf="@+id/txtAgencia"
             app:layout_constraintTop_toBottomOf="@+id/txtComplemento" />
 
         <TextView
@@ -258,9 +258,11 @@
             android:layout_marginEnd="8dp"
             android:text="0252"
             android:textAlignment="center"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintEnd_toEndOf="@+id/txtConta"
+            app:layout_constraintEnd_toStartOf="@+id/acbtnAcao"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/lblAgencia"
+            app:layout_constraintStart_toStartOf="@+id/txtConta"
             app:layout_constraintTop_toBottomOf="@+id/txtBanco" />
 
         <TextView
@@ -272,10 +274,42 @@
             android:layout_marginEnd="8dp"
             android:text="02352627535-9"
             android:textAlignment="center"
-            app:layout_constraintEnd_toStartOf="@+id/guideline2"
-            app:layout_constraintHorizontal_bias="0.435"
+            app:layout_constraintEnd_toStartOf="@+id/acbtnAcao"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/lblConta"
             app:layout_constraintTop_toBottomOf="@+id/txtAgencia" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/acbtnAcao"
+            android:layout_width="53dp"
+            android:layout_height="56dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            app:backgroundTint="@color/colorPrimary"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/guideline2"
+            app:srcCompat="@android:drawable/ic_menu_edit"
+            app:useCompatPadding="false"
+            tools:srcCompat="@tools:sample/avatars[1]" />
+
+        <LinearLayout
+            android:id="@+id/linActionMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@+id/acbtnAcao"
+            app:layout_constraintEnd_toEndOf="@+id/txtComplemento">
+
+            <Button
+                android:id="@+id/btnLimite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Alterar Limite" />
+        </LinearLayout>
 
     </android.support.constraint.ConstraintLayout>
 
