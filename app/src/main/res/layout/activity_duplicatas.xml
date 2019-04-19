@@ -6,6 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".DuplicatasActivity">
 
+    <TextView
+        android:id="@+id/txtEmissor"
+        android:layout_width="121dp"
+        android:layout_height="26dp"
+        android:text="Emissor"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtDuplicata"
+        tools:layout_editor_absoluteX="277dp" />
+
+    <TextView
+        android:id="@+id/txtCliente"
+        android:layout_width="121dp"
+        android:layout_height="26dp"
+        android:text="Id Cliente"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtEmissor"
+        tools:layout_editor_absoluteX="494dp" />
+
     <ImageView
         android:id="@+id/imgLogoDuplicata"
         android:layout_width="50dp"
@@ -52,14 +68,110 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_percent="0.96107054" />
 
-    <SearchView
-        android:id="@+id/srcvwPesquisarDuplicata"
-        android:layout_width="0dp"
+    <EditText
+        android:id="@+id/etxtDuplicata"
+        android:layout_width="158dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="20dp"
+        android:ems="10"
+        android:hint="123456"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@+id/spi_Emissor"
+        app:layout_constraintStart_toStartOf="@+id/guideline3" />
+
+    <Spinner
+        android:id="@+id/spi_Emissor"
+        android:layout_width="217dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="24dp"
+        android:entries="FazTec"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toBottomOf="@+id/etxtCLiente"
+        app:layout_constraintStart_toEndOf="@+id/etxtDuplicata" />
+
+    <EditText
+        android:id="@+id/etxtCLiente"
+        android:layout_width="166dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:hint="1234"
+        android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintStart_toEndOf="@+id/spi_Emissor"
+        app:layout_constraintTop_toBottomOf="@+id/txtCliente" />
+
+    <TextView
+        android:id="@+id/txtDuplicata"
+        android:layout_width="121dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="N° Duplicata"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toBottomOf="@+id/txtDuplicatas" />
+
+    <TextView
+        android:id="@+id/txtData"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="data emissão"
+        app:layout_constraintBottom_toBottomOf="@+id/txtStatus"
+        app:layout_constraintStart_toStartOf="@+id/guideline3" />
+
+    <EditText
+        android:id="@+id/etxtData"
+        android:layout_width="156dp"
+        android:layout_height="40dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        android:ems="10"
+        android:inputType="date"
+        app:layout_constraintEnd_toStartOf="@+id/spiStatus"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
-        tools:layout_editor_absoluteY="66dp" />
+        app:layout_constraintTop_toTopOf="@+id/spiStatus" />
+
+    <Spinner
+        android:id="@+id/spiStatus"
+        android:layout_width="182dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:entries="Aberto"
+        android:spinnerMode="dropdown"
+        app:layout_constraintTop_toBottomOf="@+id/txtStatus"
+        tools:layout_editor_absoluteX="250dp" />
+
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Status"
+        app:layout_constraintTop_toBottomOf="@+id/spi_Emissor"
+        tools:layout_editor_absoluteX="321dp" />
+
+    <Spinner
+        android:id="@+id/spiTipo"
+        android:layout_width="172dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
+        app:layout_constraintHorizontal_bias="0.621"
+        app:layout_constraintStart_toEndOf="@+id/spiStatus"
+        app:layout_constraintTop_toTopOf="@+id/spiStatus" />
+
+    <TextView
+        android:id="@+id/txtPagamento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="48dp"
+        android:text="Forma de Pagamento"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txtStatus"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4" />
+
 </android.support.constraint.ConstraintLayout>

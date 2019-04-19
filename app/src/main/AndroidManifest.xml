@@ -24,7 +24,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Duplicatas"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="landscape" />
         <activity
             android:name=".EmitenteActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
