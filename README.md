@@ -17,5 +17,7 @@ Esta aplicação não possui troca de informações com um servidor, assim como 
 localmente. 
 
 Esta aplicação não foi criada para ser utilizada em ambiente de produção, uma vez que foi desenvolvido apenas para complementar as
-atividades de engenharia de software, ao tirar do papel parte da documentação criada em 1 ano e 6 meses (ESI, ESII,ESIII). Adicionalmente,
-medidas de segurança do software também não serão considerados.
+atividades de engenharia de software, ao tirar do papel parte da documentação criada em 1 ano e 6 meses (ESI, ESII,ESIII).
+Esta aplicação é a implementação de apenas parte do projeto desenvolvido para contas a receber. A implementação do sistema integrado não será realizado uma vez que os integrantes do grupo optaram por não utilizar este trabalho como PI (Projeto Integrado).
+
+Adicionalmente, medidas de segurança do software também não serão considerados.
