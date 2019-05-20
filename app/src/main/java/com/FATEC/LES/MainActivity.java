@@ -1,14 +1,23 @@
 package com.FATEC.LES;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.strictmode.SqliteObjectLeakedViolation;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class MainActivity extends AppCompatActivity {
+import com.FATEC.LES.DAO.Contrato;
+import com.FATEC.LES.Helper.DBHelper;
+import com.FATEC.LES.Model.Emitente;
+import com.FATEC.LES.Model.Usuario;
+import com.FATEC.LES.Model.Cliente;
 
+public class MainActivity extends AppCompatActivity {
+    private DBHelper dbHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,11 +69,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     @Override
     public void onBackPressed() {
         moveTaskToBack(true); //app fica em 2º plano
     }
+
+
 }
