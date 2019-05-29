@@ -10,14 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.FATEC.LES.DAO.Contrato;
+import com.FATEC.LES.DAO.DummyDataEntries;
 import com.FATEC.LES.Helper.DBHelper;
-import com.FATEC.LES.Model.Emitente;
-import com.FATEC.LES.Model.Usuario;
-import com.FATEC.LES.Model.Cliente;
 
 public class MainActivity extends AppCompatActivity {
-    private DBHelper dbHelper;
+    private DBHelper dbHelper = new DBHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +66,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        DummyDataEntries de = new DummyDataEntries();
+        de.insertEmitente(dbHelper);
+        de.insertUsuario(dbHelper);
+        de.insertCliente(dbHelper);
     }
 
     @Override

@@ -3,6 +3,8 @@ package com.FATEC.LES.DAO;
 import android.database.DatabaseUtils;
 import android.provider.BaseColumns;
 
+import com.FATEC.LES.Model.Emitente;
+
 public final class Contrato {
 
     //tabelas
@@ -27,11 +29,16 @@ public final class Contrato {
         public static final String COLUMN_ID = "Emi_Id";
         public static final String COLUMN_CNPJ = "Emi_CNPJ";
         public static final String COLUMN_RZSOCIAL = "Emi_Razao_Social";
+        public static final String COLUMN_EMAIL = "Emi_Email";
         public static final String COLUMN_BANCO = "Emi_Banco";
         public static final String COLUMN_AG = "Emi_Ag";
         public static final String COLUMN_CONTA = "Emi_Conta";
         public static final String COLUMN_CIDADE = "Emi_Cidade";
         public static final String COLUMN_UF = "Emi_UF";
+        public static final String COLUMN_NUMERO = "Emi_Numero";
+        public static final String COLUMN_BAIRRO = "Emi_Bairro";
+        public static final String COLUMN_CEP = "Emi_CEP";
+        public static final String COLUMN_LOGRADOURO = "Emi_Logradouro";
     }
 
     public static abstract class Cliente_TB implements BaseColumns {
@@ -39,6 +46,7 @@ public final class Contrato {
         public static final String COLUMN_ID = "Cli_Id";
         public static final String COLUMN_CNPJ = "Cli_CNPJ";
         public static final String COLUMN_RZSOCIAL = "Cli_Razao_Social";
+        public static final String COLUMN_EMAIL = "Cli_Email";
         public static final String COLUMN_LOGRADOURO = "Cli_Logradouro";
         public static final String COLUMN_NUMERO = "Cli_Numero";
         public static final String COLUMN_BAIRRO = "Cli_Bairro";
@@ -103,6 +111,11 @@ public final class Contrato {
             "( " + Emitente_TB.COLUMN_ID + " INTEGER, " +
                   Emitente_TB.COLUMN_CNPJ + " VARCHAR(14), " +
                   Emitente_TB.COLUMN_RZSOCIAL + " VARCHAR(100), " +
+                  Emitente_TB.COLUMN_EMAIL + " VARCHAR(100), " +
+                  Emitente_TB.COLUMN_LOGRADOURO + " VARCHAR(60), " +
+                  Emitente_TB.COLUMN_NUMERO + " INTEGER, " +
+                  Emitente_TB.COLUMN_BAIRRO + " VARCHAR(30), " +
+                  Emitente_TB.COLUMN_CEP + " INTEGER, " +
                   Emitente_TB.COLUMN_BANCO + " INTEGER, " +
                   Emitente_TB.COLUMN_AG + " INTEGER, " +
                   Emitente_TB.COLUMN_CONTA + " INTEGER, " +
@@ -114,6 +127,7 @@ public final class Contrato {
             "( " + Cliente_TB.COLUMN_ID + " INTEGER, " +
                   Cliente_TB.COLUMN_CNPJ + " VARCHAR(14), " +
                   Cliente_TB.COLUMN_RZSOCIAL + " VARCHAR(60), " +
+                  Cliente_TB.COLUMN_EMAIL + " VARCHAR(100), " +
                   Cliente_TB.COLUMN_LOGRADOURO + " VARCHAR(60), " +
                   Cliente_TB.COLUMN_NUMERO + " INTEGER, " +
                   Cliente_TB.COLUMN_BAIRRO + " VARCHAR(30), " +

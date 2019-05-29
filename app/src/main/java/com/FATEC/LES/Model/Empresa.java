@@ -9,8 +9,16 @@ public class Empresa {
     private Integer Conta;
     private String Cidade;
     private String UF;
+    private String Email;
+    private Integer Num;
+    private Integer Cep;
+    private String Bairro;
+    private String endereco;
 
-    public Empresa(String CNPJ, String razao_Social, java.lang.Integer banco, java.lang.Integer ag, java.lang.Integer conta, String cidade, String UF) {
+
+    public Empresa(String CNPJ, String razao_Social, java.lang.Integer banco,
+                   java.lang.Integer ag, java.lang.Integer conta, String cidade,
+                   String UF, String email, String Bairro, Integer Cep, Integer Num, String endereco) {
         this.CNPJ = CNPJ;
         Razao_Social = razao_Social;
         Banco = banco;
@@ -18,6 +26,11 @@ public class Empresa {
         Conta = conta;
         Cidade = cidade;
         this.UF = UF;
+        Email = email;
+        this.Bairro = Bairro;
+        this.endereco = endereco;
+        this.Num = Num;
+        this.Cep = Cep;
     }
 
     public String getCNPJ() {
@@ -74,5 +87,53 @@ public class Empresa {
 
     public void setUF(String UF) {
         this.UF = UF;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
+
+    public void setEmail(String email) {
+        Email = email;
+    }
+
+    public String formatCNPJ(String CNPJ){
+        return(CNPJ.replaceFirst("(\\d{3})(\\d{3})(\\d{3})(\\d{4})(\\d+)","$1.$2.$3/$4-$5"));
+    }
+
+    public String formatCEP(String cep){
+        return(cep.replaceFirst("(\\d{5})(\\d{3})","$1-$2"));
+    }
+
+    public Integer getNum() {
+        return Num;
+    }
+
+    public void setNum(Integer num) {
+        Num = num;
+    }
+
+    public Integer getCep() {
+        return Cep;
+    }
+
+    public void setCep(Integer cep) {
+        Cep = cep;
+    }
+
+    public String getBairro() {
+        return Bairro;
+    }
+
+    public void setBairro(String bairro) {
+        Bairro = bairro;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }
