@@ -8,9 +8,9 @@ public class Duplicata {
     private Integer dup_Emitente;
     private Integer dup_Cliente;
     private String dup_Status;
-    private Date dup_Data_Emissao;
+    private String dup_Data_Emissao;
     private Integer dup_Forma_Pag;
-    private Float dup_Valor;
+    private Double dup_Valor;
 
     public Duplicata(Integer dup_Id_Duplicata, Integer dup_Emitente, Integer dup_Cliente) {
         this.dup_Id_Duplicata = dup_Id_Duplicata;
@@ -46,11 +46,11 @@ public class Duplicata {
         this.dup_Status = dup_Status;
     }
 
-    public Date getDup_Data_Emissao() {
+    public String getDup_Data_Emissao() {
         return dup_Data_Emissao;
     }
 
-    public void setDup_Data_Emissao(Date dup_Data_Emissao) {
+    public void setDup_Data_Emissao(String dup_Data_Emissao) {
         this.dup_Data_Emissao = dup_Data_Emissao;
     }
 
@@ -62,11 +62,11 @@ public class Duplicata {
         this.dup_Forma_Pag = dup_Forma_Pag;
     }
 
-    public Float getDup_Valor() {
+    public Double getDup_Valor() {
         return dup_Valor;
     }
 
-    public void setDup_Valor(Float dup_Valor) {
+    public void setDup_Valor(Double dup_Valor) {
         this.dup_Valor = dup_Valor;
     }
 }

@@ -1,6 +1,11 @@
 package com.FATEC.LES.Model;
 
-public class Empresa {
+import android.annotation.SuppressLint;
+import android.os.Parcel;
+import android.os.Parcelable;
+
+@SuppressLint("ParcelCreator")
+public class Empresa implements Parcelable {
 
     private String CNPJ;
     private String Razao_Social;
@@ -32,6 +37,53 @@ public class Empresa {
         this.Num = Num;
         this.Cep = Cep;
     }
+
+    protected Empresa(Parcel in) {
+        CNPJ = in.readString();
+        Razao_Social = in.readString();
+        if (in.readByte() == 0) {
+            Banco = null;
+        } else {
+            Banco = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            Ag = null;
+        } else {
+            Ag = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            Conta = null;
+        } else {
+            Conta = in.readInt();
+        }
+        Cidade = in.readString();
+        UF = in.readString();
+        Email = in.readString();
+        if (in.readByte() == 0) {
+            Num = null;
+        } else {
+            Num = in.readInt();
+        }
+        if (in.readByte() == 0) {
+            Cep = null;
+        } else {
+            Cep = in.readInt();
+        }
+        Bairro = in.readString();
+        endereco = in.readString();
+    }
+
+    public static final Creator<Empresa> CREATOR = new Creator<Empresa>() {
+        @Override
+        public Empresa createFromParcel(Parcel in) {
+            return new Empresa(in);
+        }
+
+        @Override
+        public Empresa[] newArray(int size) {
+            return new Empresa[size];
+        }
+    };
 
     public String getCNPJ() {
         return CNPJ;
@@ -135,5 +187,51 @@ public class Empresa {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(CNPJ);
+        dest.writeString(Razao_Social);
+        if (Banco == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(Banco);
+        }
+        if (Ag == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(Ag);
+        }
+        if (Conta == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(Conta);
+        }
+        dest.writeString(Cidade);
+        dest.writeString(UF);
+        dest.writeString(Email);
+        if (Num == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(Num);
+        }
+        if (Cep == null) {
+            dest.writeByte((byte) 0);
+        } else {
+            dest.writeByte((byte) 1);
+            dest.writeInt(Cep);
+        }
+        dest.writeString(Bairro);
+        dest.writeString(endereco);
     }
 }

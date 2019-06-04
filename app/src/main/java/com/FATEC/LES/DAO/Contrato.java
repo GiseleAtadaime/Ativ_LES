@@ -146,7 +146,7 @@ public final class Contrato {
                   Duplicata_TB.COLUMN_ID_EMI + " INTEGER, " +
                   Duplicata_TB.COLUMN_ID_CLI + " INTEGER, " +
                   Duplicata_TB.COLUMN_STATUS + " VARCHAR(1), " +
-                  Duplicata_TB.COLUMN_DT_EMI + " DATE, " +
+                  Duplicata_TB.COLUMN_DT_EMI + " DATETIME, " +
                   Duplicata_TB.COLUMN_FORMA_PAG + " INTEGER, " +
                   Duplicata_TB.COLUMN_VALOR + " NUMERIC(10,2), " +
             " CONSTRAINT pk_duplicata PRIMARY KEY ( " + Duplicata_TB.COLUMN_ID_DUP + " ), " +
@@ -159,7 +159,7 @@ public final class Contrato {
                   Parcela_TB.COLUMN_DATA_VENC + " DATE, " +
                   Parcela_TB.COLUMN_VALOR + " NUMERIC(10,2), " +
                   Parcela_TB.COLUMN_MOEDA + " VARCHAR(10), " +
-                  Parcela_TB.COLUMN_DATA_PAG + " DATE, " +
+                  Parcela_TB.COLUMN_DATA_PAG + " DATETIME, " +
                   Parcela_TB.COLUMN_VALOR_PAG + " NUMERIC(10,2), " +
                   Parcela_TB.COLUMN_DESCONTO + " NUMERIC(3,2), " +
                   Parcela_TB.COLUMN_JUROS + " NUMERIC(3,2), " +

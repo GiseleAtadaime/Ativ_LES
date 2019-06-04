@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.FATEC.LES.Helper.DBHelper;
 import com.FATEC.LES.Helper.QueriesHelper;
@@ -19,12 +20,13 @@ public class ClienteActivity extends AppCompatActivity {
 
     private DBHelper dbHelper = new DBHelper(this);
     Cliente cli;
+    TextView txtID;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
-
+        txtID = findViewById(R.id.txtCodigo);
         FloatingActionButton btnAcao = (FloatingActionButton) findViewById(R.id.acbtnAcao);
         btnAcao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,8 +46,17 @@ public class ClienteActivity extends AppCompatActivity {
         btnAlterarLimite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent inLimite = new Intent(ClienteActivity.this, LimCredActivity.class);
-                startActivity(inLimite);
+
+                if ( txtID.getText().equals("--") == true){
+                    Toast.makeText(getApplicationContext(),"Nenhum cliente selecionado", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Intent inLimite = new Intent(ClienteActivity.this, LimCredActivity.class);
+                    inLimite.putExtra("ID_CLIENTE", cli.getCli_ID());
+                    inLimite.putExtra("CLI_LIMITE", cli.getCli_LimCred());
+                    startActivity(inLimite);
+                }
+
             }
         });
 

@@ -1,8 +1,8 @@
 package com.FATEC.LES.Helper;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.view.ContextThemeWrapper;
 
 import com.FATEC.LES.DAO.Contrato;
 import com.FATEC.LES.Model.Cliente;
@@ -97,5 +97,211 @@ public class QueriesHelper {
         }
 
     }
+
+    public Boolean alterarLimite(Integer id, Double limite, DBHelper dbHelper){
+        Cursor c = null;
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues lim = new ContentValues();
+        lim.put(Contrato.Cliente_TB.COLUMN_ID, id);
+        lim.put(Contrato.Cliente_TB.COLUMN_LIMCRED, limite);
+
+        try{
+            db.update(Contrato.Cliente_TB.TABLENAME,lim,Contrato.Cliente_TB.COLUMN_ID + " = ?", new String[]{id.toString()});
+        }
+        finally {
+            return true;
+        }
+    }
+
+    public Double totalReceber(Integer id, DBHelper dbHelper){
+        Cursor c = null;
+        Double total = null;
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query;
+
+        if (id != null) {
+            query  = "SELECT SUM(p." + Contrato.Parcela_TB.COLUMN_VALOR + ") as total FROM " + Contrato.Parcela_TB.TABLENAME + " p , " + Contrato.Duplicata_TB.TABLENAME +
+                    " d WHERE p." + Contrato.Parcela_TB.COLUMN_STATUS +" = '" + Contrato.Parcela_TB.STATUS_ABERTO + "' and p." + Contrato.Parcela_TB.COLUMN_ID_DUP +
+            " =  d." + Contrato.Duplicata_TB.COLUMN_ID_DUP;
+        }
+        else{
+            query  = "SELECT SUM(" + Contrato.Parcela_TB.COLUMN_VALOR + ") as total FROM " + Contrato.Parcela_TB.TABLENAME +
+                    " WHERE " + Contrato.Parcela_TB.COLUMN_STATUS +" = '" + Contrato.Parcela_TB.STATUS_ABERTO + "'";
+        }
+
+        try{
+            c = db.rawQuery(query,null);
+
+            if(c.moveToFirst()){
+                total = c.getDouble(c.getColumnIndex("total"));
+            }
+
+        }
+        finally {
+            c.close();
+            return total;
+        }
+    }
+
+    public Double total7dias(Integer id, DBHelper dbHelper){
+        Cursor c = null;
+        Double total = null;
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query;
+
+        if (id != null) {
+            query  = "SELECT SUM(p." + Contrato.Parcela_TB.COLUMN_VALOR + ") as total FROM " + Contrato.Parcela_TB.TABLENAME + " p , " + Contrato.Duplicata_TB.TABLENAME +
+                    " d WHERE p." + Contrato.Parcela_TB.COLUMN_STATUS +" = '" + Contrato.Parcela_TB.STATUS_ABERTO + "' and p." + Contrato.Parcela_TB.COLUMN_ID_DUP +
+                    " =  d." + Contrato.Duplicata_TB.COLUMN_ID_DUP  + " and datetime(p." + Contrato.Parcela_TB.COLUMN_DATA_VENC + ") between datetime('now','start of day') and datetime('now','+8 day','start of day', '-1 seconds')";
+        }
+        else{
+            query  = "SELECT SUM(" + Contrato.Parcela_TB.COLUMN_VALOR + ") as total FROM " + Contrato.Parcela_TB.TABLENAME +
+                    " WHERE " + Contrato.Parcela_TB.COLUMN_STATUS +" = '" + Contrato.Parcela_TB.STATUS_ABERTO + "' AND datetime(" + Contrato.Parcela_TB.COLUMN_DATA_VENC  + ") between datetime('now','start of day') and datetime('now','+8 day','start of day', '-1 seconds')" ;
+        }
+
+        try{
+            c = db.rawQuery(query,null);
+
+            if(c.moveToFirst()){
+                total = c.getDouble(c.getColumnIndex("total"));
+            }
+
+        }
+        finally {
+            c.close();
+            return total;
+        }
+    }
+
+    public Double total7a30(Integer id, DBHelper dbHelper){
+        Cursor c = null;
+        Double total = null;
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query;
+
+        if (id != null) {
+            query  = "SELECT SUM(p." + Contrato.Parcela_TB.COLUMN_VALOR + ") as total FROM " + Contrato.Parcela_TB.TABLENAME + " p , " + Contrato.Duplicata_TB.TABLENAME +
+                    " d WHERE p." + Contrato.Parcela_TB.COLUMN_STATUS +" = '" + Contrato.Parcela_TB.STATUS_ABERTO + "' and p." + Contrato.Parcela_TB.COLUMN_ID_DUP +
+                    " =  d." + Contrato.Duplicata_TB.COLUMN_ID_DUP  + " and datetime(p." + Contrato.Parcela_TB.COLUMN_DATA_VENC + ") between datetime('now','start of day','+8 day') and datetime('now','+31 day','start of day', '-1 seconds')";
+        }
+        else{
+            query  = "SELECT SUM(" + Contrato.Parcela_TB.COLUMN_VALOR + ") as total FROM " + Contrato.Parcela_TB.TABLENAME +
+                    " WHERE " + Contrato.Parcela_TB.COLUMN_STATUS  +" = '" + Contrato.Parcela_TB.STATUS_ABERTO +  "' AND datetime(" + Contrato.Parcela_TB.COLUMN_DATA_VENC  + ") between datetime('now','start of day','+8 day') and datetime('now','+31 day','start of day', '-1 seconds')" ;
+        }
+
+
+        try{
+            c = db.rawQuery(query,null);
+
+            if(c.moveToFirst()){
+                total = c.getDouble(c.getColumnIndex("total"));
+            }
+
+        }
+        finally {
+            c.close();
+            return total;
+        }
+    }
+
+    public Double total30Dias(Integer id, DBHelper dbHelper){
+        Cursor c = null;
+        Double total = null;
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query;
+
+        if (id != null) {
+            query  = "SELECT SUM(p." + Contrato.Parcela_TB.COLUMN_VALOR + ") as total FROM " + Contrato.Parcela_TB.TABLENAME + " p , " + Contrato.Duplicata_TB.TABLENAME +
+                    " d WHERE p." + Contrato.Parcela_TB.COLUMN_STATUS +" = '" + Contrato.Parcela_TB.STATUS_ABERTO + "' and p." + Contrato.Parcela_TB.COLUMN_ID_DUP +
+                    " =  d." + Contrato.Duplicata_TB.COLUMN_ID_DUP  + " and datetime(p." + Contrato.Parcela_TB.COLUMN_DATA_VENC + ") > datetime('now','+61 day','start of day')";
+        }
+        else{
+            query  = "SELECT SUM(" + Contrato.Parcela_TB.COLUMN_VALOR + ") as total FROM " + Contrato.Parcela_TB.TABLENAME +
+                    " WHERE " + Contrato.Parcela_TB.COLUMN_STATUS  +" = '" + Contrato.Parcela_TB.STATUS_ABERTO +  "' AND datetime(" + Contrato.Parcela_TB.COLUMN_DATA_VENC  + ") > datetime('now','+61 day','start of day')" ;
+        }
+
+
+        try{
+            c = db.rawQuery(query,null);
+
+            if(c.moveToFirst()){
+                total = c.getDouble(c.getColumnIndex("total"));
+            }
+
+        }
+        finally {
+            c.close();
+            return total;
+        }
+    }
+
+    public Double total30DiasVenc(Integer id, DBHelper dbHelper){
+        Cursor c = null;
+        Double total = null;
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query;
+
+        if (id != null) {
+            query  = "SELECT SUM(p." + Contrato.Parcela_TB.COLUMN_VALOR + ") as total FROM " + Contrato.Parcela_TB.TABLENAME + " p , " + Contrato.Duplicata_TB.TABLENAME +
+                    " d WHERE p." + Contrato.Parcela_TB.COLUMN_STATUS +" = '" + Contrato.Parcela_TB.STATUS_VENCIDO + "' and p." + Contrato.Parcela_TB.COLUMN_ID_DUP +
+                    " =  d." + Contrato.Duplicata_TB.COLUMN_ID_DUP  + " and datetime(p." + Contrato.Parcela_TB.COLUMN_DATA_VENC + ") > datetime('now','-30 day','start of day')";
+        }
+        else{
+            query  = "SELECT SUM(" + Contrato.Parcela_TB.COLUMN_VALOR + ") as total FROM " + Contrato.Parcela_TB.TABLENAME +
+                    " WHERE " + Contrato.Parcela_TB.COLUMN_STATUS  +" = '" + Contrato.Parcela_TB.STATUS_VENCIDO +  "' AND datetime(" + Contrato.Parcela_TB.COLUMN_DATA_VENC  + ") > datetime('now','-30 day','start of day')" ;
+        }
+
+
+        try{
+            c = db.rawQuery(query,null);
+
+            if(c.moveToFirst()){
+                total = c.getDouble(c.getColumnIndex("total"));
+            }
+
+        }
+        finally {
+            c.close();
+            return total;
+        }
+    }
+    public Double total30DiasVencMais(Integer id, DBHelper dbHelper){
+        Cursor c = null;
+        Double total = null;
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query;
+
+        if (id != null) {
+            query  = "SELECT SUM(p." + Contrato.Parcela_TB.COLUMN_VALOR + ") as total FROM " + Contrato.Parcela_TB.TABLENAME + " p , " + Contrato.Duplicata_TB.TABLENAME +
+                    " d WHERE p." + Contrato.Parcela_TB.COLUMN_STATUS +" = '" + Contrato.Parcela_TB.STATUS_VENCIDO + "' and p." + Contrato.Parcela_TB.COLUMN_ID_DUP +
+                    " =  d." + Contrato.Duplicata_TB.COLUMN_ID_DUP  + " and datetime(p." + Contrato.Parcela_TB.COLUMN_DATA_VENC + ") < datetime('now','-30 day','start of day')";
+        }
+        else{
+            query  = "SELECT SUM(" + Contrato.Parcela_TB.COLUMN_VALOR + ") as total FROM " + Contrato.Parcela_TB.TABLENAME +
+                    " WHERE " + Contrato.Parcela_TB.COLUMN_STATUS  +" = '" + Contrato.Parcela_TB.STATUS_VENCIDO +  "' AND datetime(" + Contrato.Parcela_TB.COLUMN_DATA_VENC  + ") < datetime('now','-30 day','start of day')" ;
+        }
+
+
+        try{
+            c = db.rawQuery(query,null);
+
+            if(c.moveToFirst()){
+                total = c.getDouble(c.getColumnIndex("total"));
+            }
+
+        }
+        finally {
+            c.close();
+            return total;
+        }
+    }
+
 
 }

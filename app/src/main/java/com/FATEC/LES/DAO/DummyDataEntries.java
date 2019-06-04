@@ -6,8 +6,16 @@ import android.database.sqlite.SQLiteDatabase;
 import com.FATEC.LES.Helper.DBHelper;
 import com.FATEC.LES.MainActivity;
 import com.FATEC.LES.Model.Cliente;
+import com.FATEC.LES.Model.Duplicata;
 import com.FATEC.LES.Model.Emitente;
+import com.FATEC.LES.Model.Parcela;
 import com.FATEC.LES.Model.Usuario;
+
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class DummyDataEntries {
 
@@ -88,5 +96,96 @@ public class DummyDataEntries {
         db.insert(Contrato.Cliente_TB.TABLENAME,null, values);
     }
 
+    public void insertDuplicata(DBHelper dbHelper){
+        Duplicata dummyDuplicata = new Duplicata(1,1,1);
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+
+        dummyDuplicata.setDup_Status("A");
+        dummyDuplicata.setDup_Forma_Pag(2);
+        dummyDuplicata.setDup_Data_Emissao(dateFormat.format(date));
+        dummyDuplicata.setDup_Valor(1401.00);
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(Contrato.Duplicata_TB.COLUMN_ID_DUP, dummyDuplicata.getDup_Id_Duplicata());
+        values.put(Contrato.Duplicata_TB.COLUMN_ID_CLI, dummyDuplicata.getDup_Cliente());
+        values.put(Contrato.Duplicata_TB.COLUMN_ID_EMI, dummyDuplicata.getDup_Emitente());
+        values.put(Contrato.Duplicata_TB.COLUMN_STATUS, Contrato.Duplicata_TB.STATUS_ABERTO);
+        values.put(Contrato.Duplicata_TB.COLUMN_DT_EMI, dummyDuplicata.getDup_Data_Emissao());
+        values.put(Contrato.Duplicata_TB.COLUMN_FORMA_PAG, dummyDuplicata.getDup_Forma_Pag());
+        values.put(Contrato.Duplicata_TB.COLUMN_VALOR, dummyDuplicata.getDup_Valor());
+
+        db.insert(Contrato.Duplicata_TB.TABLENAME,null, values);
+    }
+
+    public void insertParcela(DBHelper dbHelper){
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+                "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
+        Date date = new Date();
+        c.setTime(date);
+        c.add(Calendar.MONTH,1);
+        date = c.getTime();
+
+        Parcela dummyParcela1 = new Parcela(1,1);
+        dummyParcela1.setPar_Data_Venc(dateFormat.format(date));
+        dummyParcela1.setPar_Valor(1200.50);
+        dummyParcela1.setPar_Moeda("Real");
+        dummyParcela1.setPar_Data_Pag(null);
+        dummyParcela1.setPar_Valor_Pag(null);
+        dummyParcela1.setPar_Desconto(0.0);
+        dummyParcela1.setPar_Juros(0.0);
+        dummyParcela1.setPar_Status(Contrato.Parcela_TB.STATUS_ABERTO);
+        dummyParcela1.setPar_Banco(0);
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(Contrato.Parcela_TB.COLUMN_NUMERO,dummyParcela1.getPar_Numero());
+        values.put(Contrato.Parcela_TB.COLUMN_ID_DUP,dummyParcela1.getPar_Id_Duplicata());
+        values.put(Contrato.Parcela_TB.COLUMN_DATA_VENC,dummyParcela1.getPar_Data_Venc());
+        values.put(Contrato.Parcela_TB.COLUMN_VALOR,dummyParcela1.getPar_Valor());
+        values.put(Contrato.Parcela_TB.COLUMN_MOEDA,dummyParcela1.getPar_Moeda());
+        values.put(Contrato.Parcela_TB.COLUMN_DATA_PAG,dummyParcela1.getPar_Data_Pag());
+        values.put(Contrato.Parcela_TB.COLUMN_VALOR_PAG,dummyParcela1.getPar_Valor_Pag());
+        values.put(Contrato.Parcela_TB.COLUMN_DESCONTO,dummyParcela1.getPar_Desconto());
+        values.put(Contrato.Parcela_TB.COLUMN_JUROS,dummyParcela1.getPar_Juros());
+        values.put(Contrato.Parcela_TB.COLUMN_STATUS,dummyParcela1.getPar_Status());
+        values.put(Contrato.Parcela_TB.COLUMN_BANCO,dummyParcela1.getPar_Banco());
+
+        db.insert(Contrato.Parcela_TB.TABLENAME,null, values);
+
+        c.add(Calendar.MONTH,1);
+        date = c.getTime();
+
+        Parcela dummyParcela2 = new Parcela(2,1);
+        dummyParcela2.setPar_Data_Venc(dateFormat.format(date));
+        dummyParcela2.setPar_Valor(1200.50);
+        dummyParcela2.setPar_Moeda("Real");
+        dummyParcela2.setPar_Data_Pag(null);
+        dummyParcela2.setPar_Valor_Pag(null);
+        dummyParcela2.setPar_Desconto(0.0);
+        dummyParcela2.setPar_Juros(0.0);
+        dummyParcela2.setPar_Status(Contrato.Parcela_TB.STATUS_ABERTO);
+        dummyParcela2.setPar_Banco(0);
+
+        values = new ContentValues();
+        values.put(Contrato.Parcela_TB.COLUMN_NUMERO,dummyParcela2.getPar_Numero());
+        values.put(Contrato.Parcela_TB.COLUMN_ID_DUP,dummyParcela2.getPar_Id_Duplicata());
+        values.put(Contrato.Parcela_TB.COLUMN_DATA_VENC,dummyParcela2.getPar_Data_Venc());
+        values.put(Contrato.Parcela_TB.COLUMN_VALOR,dummyParcela2.getPar_Valor());
+        values.put(Contrato.Parcela_TB.COLUMN_MOEDA,dummyParcela2.getPar_Moeda());
+        values.put(Contrato.Parcela_TB.COLUMN_DATA_PAG,dummyParcela2.getPar_Data_Pag());
+        values.put(Contrato.Parcela_TB.COLUMN_VALOR_PAG,dummyParcela2.getPar_Valor_Pag());
+        values.put(Contrato.Parcela_TB.COLUMN_DESCONTO,dummyParcela2.getPar_Desconto());
+        values.put(Contrato.Parcela_TB.COLUMN_JUROS,dummyParcela2.getPar_Juros());
+        values.put(Contrato.Parcela_TB.COLUMN_STATUS,dummyParcela2.getPar_Status());
+        values.put(Contrato.Parcela_TB.COLUMN_BANCO,dummyParcela2.getPar_Banco());
+
+        db.insert(Contrato.Parcela_TB.TABLENAME,null, values);
+    }
 
 }

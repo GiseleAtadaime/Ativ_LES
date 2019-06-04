@@ -67,9 +67,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         DummyDataEntries de = new DummyDataEntries();
-        de.insertEmitente(dbHelper);
+        /*de.insertEmitente(dbHelper);
         de.insertUsuario(dbHelper);
         de.insertCliente(dbHelper);
+        de.insertDuplicata(dbHelper);
+        de.insertParcela(dbHelper);*/
     }
 
     @Override

@@ -62,13 +62,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="96dp"
+            android:layout_marginTop="64dp"
             android:layout_marginEnd="8dp"
             android:text="Alterar"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
-            app:layout_constraintTop_toBottomOf="@+id/txtLimCredNew" />
+            app:layout_constraintTop_toBottomOf="@+id/etxtLimCred" />
 
         <Button
             android:id="@+id/btnCancelar"
@@ -121,16 +121,17 @@
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toBottomOf="@+id/txtLimOri" />
 
-        <TextView
-            android:id="@+id/txtLimCredNew"
+        <EditText
+            android:id="@+id/etxtLimCred"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="68dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="44dp"
             android:layout_marginEnd="8dp"
-            android:text="TextView"
+            android:ems="10"
+            android:inputType="numberDecimal"
             app:layout_constraintEnd_toStartOf="@+id/guideline7"
-            app:layout_constraintHorizontal_bias="0.374"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="@+id/guideline5"
             app:layout_constraintTop_toBottomOf="@+id/txtAltLim" />
 

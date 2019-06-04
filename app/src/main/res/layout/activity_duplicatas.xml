@@ -1,206 +1,218 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context=".DuplicatasActivity">
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        tools:context=".DuplicatasActivity">
 
-    <TextView
-        android:id="@+id/txtEmissor"
-        android:layout_width="121dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="Emissor"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtDuplicata"
-        app:layout_constraintEnd_toStartOf="@+id/txtCliente"
-        app:layout_constraintStart_toEndOf="@+id/txtDuplicata" />
+        <TextView
+            android:id="@+id/txtEmissor"
+            android:layout_width="121dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="Emissor"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtDuplicata"
+            app:layout_constraintEnd_toStartOf="@+id/txtCliente"
+            app:layout_constraintStart_toEndOf="@+id/txtDuplicata" />
 
-    <TextView
-        android:id="@+id/txtCliente"
-        android:layout_width="121dp"
-        android:layout_height="26dp"
-        android:layout_marginEnd="48dp"
-        android:text="Id Cliente"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtEmissor"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4" />
+        <TextView
+            android:id="@+id/txtCliente"
+            android:layout_width="121dp"
+            android:layout_height="26dp"
+            android:layout_marginEnd="48dp"
+            android:text="Id Cliente"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtEmissor"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4" />
 
-    <ImageView
-        android:id="@+id/imgLogoDuplicata"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:contentDescription="logo"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toEndOf="@+id/txtDuplicatas"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/tec" />
+        <ImageView
+            android:id="@+id/imgLogoDuplicata"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="logo"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toEndOf="@+id/txtDuplicatas"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/tec" />
 
-    <TextView
-        android:id="@+id/txtDuplicatas"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="Duplicatas"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/txtDuplicatas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="Duplicatas"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.04136253"
-        app:layout_constraintStart_toStartOf="parent" />
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.04136253"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.96107054" />
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.96107054" />
 
-    <EditText
-        android:id="@+id/etxtDuplicata"
-        android:layout_width="158dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="123456"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="@+id/spi_Emissor"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/txtDuplicata"
-        app:layout_constraintVertical_bias="1.0" />
+        <EditText
+            android:id="@+id/etxtDuplicata"
+            android:layout_width="158dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:hint="123456"
+            android:inputType="number"
+            app:layout_constraintBottom_toBottomOf="@+id/spi_Emissor"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/txtDuplicata"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <Spinner
-        android:id="@+id/spi_Emissor"
-        android:layout_width="217dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintBottom_toBottomOf="@+id/etxtCLiente"
-        app:layout_constraintStart_toEndOf="@+id/etxtDuplicata"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmissor"
-        app:layout_constraintVertical_bias="1.0" />
+        <Spinner
+            android:id="@+id/spi_Emissor"
+            android:layout_width="217dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintBottom_toBottomOf="@+id/etxtCLiente"
+            app:layout_constraintStart_toEndOf="@+id/etxtDuplicata"
+            app:layout_constraintTop_toBottomOf="@+id/txtEmissor"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
-        android:id="@+id/etxtCLiente"
-        android:layout_width="166dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:hint="1234"
-        android:inputType="number"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toEndOf="@+id/spi_Emissor"
-        app:layout_constraintTop_toBottomOf="@+id/txtCliente" />
+        <EditText
+            android:id="@+id/etxtCLiente"
+            android:layout_width="166dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:ems="10"
+            android:hint="1234"
+            android:inputType="number"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toEndOf="@+id/spi_Emissor"
+            app:layout_constraintTop_toBottomOf="@+id/txtCliente" />
 
-    <TextView
-        android:id="@+id/txtDuplicata"
-        android:layout_width="121dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
-        android:text="N° Duplicata"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/txtDuplicatas" />
+        <TextView
+            android:id="@+id/txtDuplicata"
+            android:layout_width="121dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:text="N° Duplicata"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/txtDuplicatas" />
 
-    <TextView
-        android:id="@+id/txtData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="8dp"
-        android:text="data emissão"
-        app:layout_constraintBottom_toBottomOf="@+id/txtStatus"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/etxtDuplicata"
-        app:layout_constraintVertical_bias="1.0" />
+        <TextView
+            android:id="@+id/txtData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:layout_marginTop="8dp"
+            android:text="data emissão"
+            app:layout_constraintBottom_toBottomOf="@+id/txtStatus"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/etxtDuplicata"
+            app:layout_constraintVertical_bias="1.0" />
 
-    <EditText
-        android:id="@+id/etxtData"
-        android:layout_width="156dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
-        android:ems="10"
-        android:inputType="date"
-        app:layout_constraintEnd_toStartOf="@+id/spiStatus"
-        app:layout_constraintHorizontal_bias="0.46"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/txtData" />
+        <EditText
+            android:id="@+id/etxtData"
+            android:layout_width="156dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="8dp"
+            android:ems="10"
+            android:inputType="date"
+            app:layout_constraintBottom_toBottomOf="@+id/spiStatus"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/txtData"
+            app:layout_constraintVertical_bias="0.333" />
 
-    <Spinner
-        android:id="@+id/spiStatus"
-        android:layout_width="182dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="28dp"
-        android:spinnerMode="dropdown"
-        app:layout_constraintTop_toBottomOf="@+id/txtStatus"
-        tools:layout_editor_absoluteX="250dp" />
+        <Spinner
+            android:id="@+id/spiStatus"
+            android:layout_width="182dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintEnd_toStartOf="@+id/spiTipo"
+            app:layout_constraintHorizontal_bias="0.076"
+            app:layout_constraintStart_toEndOf="@+id/etxtData"
+            app:layout_constraintTop_toBottomOf="@+id/txtStatus" />
 
-    <TextView
-        android:id="@+id/txtStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:text="Status"
-        app:layout_constraintEnd_toStartOf="@+id/txtPagamento"
-        app:layout_constraintStart_toEndOf="@+id/txtData"
-        app:layout_constraintTop_toBottomOf="@+id/spi_Emissor" />
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="Status"
+            app:layout_constraintEnd_toStartOf="@+id/txtPagamento"
+            app:layout_constraintStart_toEndOf="@+id/txtData"
+            app:layout_constraintTop_toBottomOf="@+id/spi_Emissor" />
 
-    <Spinner
-        android:id="@+id/spiTipo"
-        android:layout_width="172dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintHorizontal_bias="0.621"
-        app:layout_constraintStart_toEndOf="@+id/spiStatus"
-        app:layout_constraintTop_toBottomOf="@+id/txtPagamento" />
+        <Spinner
+            android:id="@+id/spiTipo"
+            android:layout_width="172dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="@+id/spiStatus"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintTop_toBottomOf="@+id/txtPagamento"
+            app:layout_constraintVertical_bias="0.333" />
 
-    <TextView
-        android:id="@+id/txtPagamento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="48dp"
-        android:text="Forma de Pagamento"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txtStatus"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4" />
+        <TextView
+            android:id="@+id/txtPagamento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="48dp"
+            android:text="Forma de Pagamento"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtStatus"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4" />
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="56dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/spiStatus"
-        app:srcCompat="?attr/colorAccent" />
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="56dp"
+            android:layout_height="51dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/spiStatus"
+            app:srcCompat="?attr/colorAccent" />
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>
