@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context=".DuplicatasActivity">
-    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
@@ -142,31 +140,16 @@
             app:layout_constraintTop_toBottomOf="@+id/etxtDuplicata"
             app:layout_constraintVertical_bias="1.0" />
 
-        <EditText
-            android:id="@+id/etxtData"
-            android:layout_width="156dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginBottom="8dp"
-            android:ems="10"
-            android:inputType="date"
-            app:layout_constraintBottom_toBottomOf="@+id/spiStatus"
-            app:layout_constraintStart_toStartOf="@+id/guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/txtData"
-            app:layout_constraintVertical_bias="0.333" />
-
         <Spinner
             android:id="@+id/spiStatus"
             android:layout_width="182dp"
             android:layout_height="40dp"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="8dp"
             android:spinnerMode="dropdown"
             app:layout_constraintEnd_toStartOf="@+id/spiTipo"
-            app:layout_constraintHorizontal_bias="0.076"
-            app:layout_constraintStart_toEndOf="@+id/etxtData"
+            app:layout_constraintStart_toEndOf="@+id/txtDatePicker"
             app:layout_constraintTop_toBottomOf="@+id/txtStatus" />
 
         <TextView
@@ -213,6 +196,20 @@
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/spiStatus"
             app:srcCompat="?attr/colorAccent" />
+
+        <TextView
+            android:id="@+id/txtDatePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
+            android:text="00/00/0000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/spiStatus"
+            app:layout_constraintStart_toStartOf="@+id/guideline3"
+            app:layout_constraintTop_toBottomOf="@+id/txtData"
+            app:layout_constraintVertical_bias="1.0" />
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>
