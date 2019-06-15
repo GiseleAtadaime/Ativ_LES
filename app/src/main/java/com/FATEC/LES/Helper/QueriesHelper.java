@@ -6,7 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.FATEC.LES.DAO.Contrato;
 import com.FATEC.LES.Model.Cliente;
+import com.FATEC.LES.Model.Duplicata;
 import com.FATEC.LES.Model.Emitente;
+
+import java.util.ArrayList;
 
 public class QueriesHelper {
 
@@ -300,6 +303,72 @@ public class QueriesHelper {
         finally {
             c.close();
             return total;
+        }
+    }
+
+    //Duplicatas
+
+    //--------------------------------------------------------------------------------------------
+
+    public ArrayList<String> spinnerEmitente(DBHelper dbHelper){
+        Cursor c = null;
+        ArrayList<String> emi = new ArrayList<String>();
+        emi.add("Selecionar");
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query = "SELECT " + Contrato.Emitente_TB.COLUMN_ID + " , " + Contrato.Emitente_TB.COLUMN_RZSOCIAL + " FROM " + Contrato.Emitente_TB.TABLENAME + " order by 1";
+
+        try{
+            c = db.rawQuery(query,null);
+
+            if(c.moveToFirst()){
+                do{
+                    emi.add(c.getString(c.getColumnIndex(Contrato.Emitente_TB.COLUMN_RZSOCIAL)));
+                }while(c.moveToNext());
+            }
+        }
+        finally {
+            c.close();
+            return emi;
+        }
+    }
+
+    public ArrayList<Duplicata> selectDuplicata(DBHelper dbHelper){
+        Cursor c = null;
+        Cliente cli = null;
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM " + Contrato.Cliente_TB.TABLENAME +
+                " WHERE ";
+
+
+        try{
+            c = db.rawQuery(query,null);
+
+            if(c.moveToFirst()){
+                cli = new Cliente(c.getString(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_CNPJ)),
+                        c.getString(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_RZSOCIAL)),
+                        c.getInt(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_BANCO)),
+                        c.getInt(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_AG)),
+                        c.getInt(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_CONTA)),
+                        c.getString(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_CIDADE)),
+                        c.getString(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_UF)),
+                        c.getString(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_EMAIL)),
+                        c.getString(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_BAIRRO)),
+                        c.getInt(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_CEP)),
+                        c.getInt(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_NUMERO)),
+                        c.getString(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_LOGRADOURO)),
+                        c.getInt(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_ID)),
+                        c.getDouble(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_LIMCRED)),
+                        c.getString(c.getColumnIndex(Contrato.Cliente_TB.COLUMN_COMPLE))
+
+                );
+
+            }
+
+        }
+        finally {
+            c.close();
+            return null;
         }
     }
 

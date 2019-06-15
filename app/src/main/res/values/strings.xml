@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">LES</string>
+
+    <string-array name="status_array">
+        <item>Selecionar</item>
+        <item>Aberto</item>
+        <item>Fechado</item>
+        <item>Vencido</item>
+    </string-array>
+
+    <string-array name="parcela_array">
+        <item>Selecionar</item>
+        <item>À vista</item>
+        <item>Parcelado</item>
+    </string-array>
 </resources>
