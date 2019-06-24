@@ -12,6 +12,10 @@ import android.widget.ImageButton;
 
 import com.FATEC.LES.DAO.DummyDataEntries;
 import com.FATEC.LES.Helper.DBHelper;
+import com.FATEC.LES.Helper.QueriesHelper;
+import com.FATEC.LES.Model.Parcela;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
     private DBHelper dbHelper = new DBHelper(this);
@@ -72,6 +76,9 @@ public class MainActivity extends AppCompatActivity {
         de.insertCliente(dbHelper);
         de.insertDuplicata(dbHelper);
         de.insertParcela(dbHelper);
+        QueriesHelper qh = new QueriesHelper();
+        ArrayList<Parcela> parcela = qh.selectParcela(dbHelper, 1);
+        System.out.println(parcela.get(0).getPar_Numero());
     }
 
     @Override

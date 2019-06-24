@@ -1,5 +1,7 @@
 package com.FATEC.LES.Model;
 
+import com.FATEC.LES.DAO.Contrato;
+
 import java.util.Date;
 
 public class Parcela {
@@ -99,5 +101,24 @@ public class Parcela {
 
     public void setPar_Banco(Integer par_Banco) {
         this.par_Banco = par_Banco;
+    }
+
+    public String transStatus(String status){
+
+        switch (status){
+            case Contrato.Parcela_TB.STATUS_ABERTO:
+                status = "ABERTO";
+                break;
+            case Contrato.Parcela_TB.STATUS_PAGO:
+                status = "PAGO";
+                break;
+            case Contrato.Parcela_TB.STATUS_VENCIDO:
+                status = "VENCIDO";
+                break;
+            case Contrato.Parcela_TB.STATUS_CANCELADO:
+                status = "CANCELADO";
+                break;
+        }
+        return status;
     }
 }

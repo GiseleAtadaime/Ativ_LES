@@ -80,7 +80,7 @@
 
         <EditText
             android:id="@+id/etxtDuplicata"
-            android:layout_width="158dp"
+            android:layout_width="120dp"
             android:layout_height="41dp"
             android:layout_marginStart="20dp"
             android:layout_marginTop="8dp"
@@ -94,9 +94,9 @@
 
         <Spinner
             android:id="@+id/spi_Emissor"
-            android:layout_width="217dp"
-            android:layout_height="41dp"
-            android:layout_marginStart="24dp"
+            android:layout_width="215dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="28dp"
             android:layout_marginTop="8dp"
             android:spinnerMode="dropdown"
             app:layout_constraintBottom_toBottomOf="@+id/etxtCLiente"
@@ -106,8 +106,8 @@
 
         <EditText
             android:id="@+id/etxtCLiente"
-            android:layout_width="166dp"
-            android:layout_height="41dp"
+            android:layout_width="119dp"
+            android:layout_height="43dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
@@ -115,6 +115,7 @@
             android:hint="1234"
             android:inputType="number"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
+            app:layout_constraintHorizontal_bias="0.404"
             app:layout_constraintStart_toEndOf="@+id/spi_Emissor"
             app:layout_constraintTop_toBottomOf="@+id/txtCliente" />
 
@@ -192,10 +193,11 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="20dp"
             android:layout_marginEnd="8dp"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toStartOf="@+id/guideline4"
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/spiStatus"
-            app:srcCompat="?attr/colorAccent" />
+            app:srcCompat="@android:drawable/ic_search_category_default" />
 
         <TextView
             android:id="@+id/txtDatePicker"
@@ -210,6 +212,26 @@
             app:layout_constraintStart_toStartOf="@+id/guideline3"
             app:layout_constraintTop_toBottomOf="@+id/txtData"
             app:layout_constraintVertical_bias="1.0" />
+
+        <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="36dp"
+            android:layout_marginEnd="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnPesq">
+
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                tools:listitem="@layout/table_list_item" />
+        </HorizontalScrollView>
 
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

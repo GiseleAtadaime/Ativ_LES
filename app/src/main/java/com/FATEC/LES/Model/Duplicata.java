@@ -1,5 +1,7 @@
 package com.FATEC.LES.Model;
 
+import com.FATEC.LES.DAO.Contrato;
+
 import java.util.Date;
 
 public class Duplicata {
@@ -68,5 +70,23 @@ public class Duplicata {
 
     public void setDup_Valor(Double dup_Valor) {
         this.dup_Valor = dup_Valor;
+    }
+    public String transStatus(String status){
+
+        switch (status){
+            case Contrato.Duplicata_TB.STATUS_ABERTO:
+                status = "ABERTO";
+                break;
+            case Contrato.Duplicata_TB.STATUS_FECHADO:
+                status = "FECHADO";
+                break;
+            case Contrato.Duplicata_TB.STATUS_VENCIDO:
+                status = "VENCIDO";
+                break;
+            case Contrato.Parcela_TB.STATUS_CANCELADO:
+                status = "CANCELADO";
+                break;
+        }
+        return status;
     }
 }

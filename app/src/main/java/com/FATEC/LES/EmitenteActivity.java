@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.FATEC.LES.Helper.DBHelper;
 import com.FATEC.LES.Helper.QueriesHelper;
@@ -26,17 +27,17 @@ public class EmitenteActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 QueriesHelper qh = new QueriesHelper();
                 if (query.length() >= 14){
-                    emi = qh.selectEmitente(Integer.parseInt(query),1,dbHelper);
+                    emi = qh.selectEmitente(query,1,dbHelper, 1);
                 }
                 else{
-                    emi = qh.selectEmitente(Integer.parseInt(query),2,dbHelper);
+                    emi = qh.selectEmitente(query,2,dbHelper, 1);
                 }
 
                 if (emi != null){
                     fillFields(emi);
                 }
                 else{
-
+                    Toast.makeText(getApplicationContext(),"Emitente não encontrado", Toast.LENGTH_SHORT).show();
                 }
 
                 return false;

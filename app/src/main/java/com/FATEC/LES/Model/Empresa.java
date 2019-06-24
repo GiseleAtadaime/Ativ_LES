@@ -20,6 +20,9 @@ public class Empresa implements Parcelable {
     private String Bairro;
     private String endereco;
 
+    public Empresa(String rzsoc){
+        this.Razao_Social = rzsoc;
+    }
 
     public Empresa(String CNPJ, String razao_Social, java.lang.Integer banco,
                    java.lang.Integer ag, java.lang.Integer conta, String cidade,

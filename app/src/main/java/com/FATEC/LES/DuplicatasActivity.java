@@ -5,6 +5,8 @@ import android.content.Context;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -19,19 +21,32 @@ import com.FATEC.LES.DAO.Contrato;
 import com.FATEC.LES.Helper.DBHelper;
 import com.FATEC.LES.Helper.QueriesHelper;
 import com.FATEC.LES.Helper.SpinnerDataContainer;
+import com.FATEC.LES.Helper.TableViewAdapter;
+import com.FATEC.LES.Model.Duplicata;
+
+import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class DuplicatasActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener{
+
     private DBHelper dbHelper = new DBHelper(this);
     TextView etxtData;
     Date dataPesq;
     Calendar data = Calendar.getInstance();
     QueriesHelper qh = new QueriesHelper();
+    ArrayList<Duplicata> dups = null;
+    RecyclerView recyclerView;
+    TableViewAdapter tableAdapter = null;
+
+    Integer id, id_emi, id_cli, status, fpag;
+    String dtemi;
+    Double valor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,11 +64,11 @@ public class DuplicatasActivity extends AppCompatActivity implements DatePickerD
         SimpleDateFormat dateFormat = new SimpleDateFormat(
                 "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
 
-        EditText etxtId, etxtIdCli;
+        final EditText etxtId, etxtIdCli;
         etxtId = findViewById(R.id.etxtDuplicata);
         etxtIdCli = findViewById(R.id.etxtCLiente);
 
-        final Spinner spiStatus, spiParcela, spiEmitente, spiMoeda;
+        final Spinner spiStatus, spiParcela, spiEmitente;
 
 
         spiStatus = (Spinner) findViewById(R.id.spiStatus);
@@ -78,17 +93,89 @@ public class DuplicatasActivity extends AppCompatActivity implements DatePickerD
                 android.R.layout.simple_spinner_item, emiSpi);
         spiEmitente.setAdapter(adapter);
 
-
         ImageButton btnPesq = findViewById(R.id.btnPesq);
+
+        recyclerView = findViewById(R.id.recyclerViewList);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(linearLayoutManager);
+
+
         btnPesq.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dataPesq = data.getTime();
-                Toast.makeText(DuplicatasActivity.this, "escolhido: " + spiEmitente.getSelectedItemId(), Toast.LENGTH_SHORT).show();
 
+                if( !etxtId.getText().toString().isEmpty()){
+                    id = Integer.parseInt(etxtId.getText().toString());
+                }
+                else{
+                    id = null;
+                }
+
+                if(!etxtIdCli.getText().toString().isEmpty()){
+                    id_cli = Integer.parseInt(etxtIdCli.getText().toString());
+                }
+                else{
+                    id_cli = null;
+                }
+
+                if(spiEmitente.getSelectedItemPosition() != 0){
+                    id_emi = spiEmitente.getSelectedItemPosition();
+                }
+                else{
+                    id_emi = null;
+                }
+
+                if(spiStatus.getSelectedItemPosition() != 0){
+                    status = spiStatus.getSelectedItemPosition();
+                }
+                else{
+                    status = null;
+                }
+
+                if(spiParcela.getSelectedItemPosition() != 0){
+                    fpag = spiParcela.getSelectedItemPosition();
+                }
+                else{
+                    fpag = null;
+                }
+                if(etxtData.getText().toString().compareTo("00/00/0000") != 0){
+                    dataPesq = data.getTime();
+                }
+                else{
+                    dataPesq = null;
+                }
+                getDuplicatas();
                 //action
+                if(dups.size() > 0){
+                    Toast.makeText(DuplicatasActivity.this, "Encontrados: " + dups.size(), Toast.LENGTH_SHORT).show();
+                    tableAdapter = new TableViewAdapter(getDuplicatas(), DuplicatasActivity.this);
+                    recyclerView.setAdapter(tableAdapter);
+                }
+                else{
+                    Toast.makeText(DuplicatasActivity.this, "nada encontrado", Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
+
+
+    }
+
+    private List<Duplicata> getDuplicatas() {
+        List<Duplicata> duplicatas = new ArrayList<>();
+        Integer i = 1;
+        dups = qh.selectDuplicata(dbHelper, id, id_emi, id_cli, status, dataPesq, fpag);
+        System.out.println("Tamanho: " + dups.size());
+        while(i <= dups.size()){
+            System.out.println("ID dup: " + dups.get(i-1).getDup_Id_Duplicata());
+            duplicatas.add(new Duplicata(dups.get(i-1).getDup_Id_Duplicata(), dups.get(i-1).getDup_Emitente(), dups.get(i-1).getDup_Cliente()));
+            duplicatas.get(i-1).setDup_Status(dups.get(i-1).getDup_Status());
+            duplicatas.get(i-1).setDup_Data_Emissao(dups.get(i-1).getDup_Data_Emissao());
+            duplicatas.get(i-1).setDup_Forma_Pag(dups.get(i-1).getDup_Forma_Pag());
+            duplicatas.get(i-1).setDup_Valor(dups.get(i-1).getDup_Valor());
+            i++;
+        }
+        return duplicatas;
     }
 
     private void showDatePickerDialog(){

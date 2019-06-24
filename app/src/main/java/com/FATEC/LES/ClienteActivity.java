@@ -27,6 +27,7 @@ public class ClienteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cliente);
         txtID = findViewById(R.id.txtCodigo);
+
         FloatingActionButton btnAcao = (FloatingActionButton) findViewById(R.id.acbtnAcao);
         btnAcao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,10 +54,8 @@ public class ClienteActivity extends AppCompatActivity {
                 else{
                     Intent inLimite = new Intent(ClienteActivity.this, LimCredActivity.class);
                     inLimite.putExtra("ID_CLIENTE", cli.getCli_ID());
-                    inLimite.putExtra("CLI_LIMITE", cli.getCli_LimCred());
                     startActivity(inLimite);
                 }
-
             }
         });
 
@@ -67,18 +66,19 @@ public class ClienteActivity extends AppCompatActivity {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 QueriesHelper qh = new QueriesHelper();
-                if (query.length() >= 14){
-                    cli = qh.selectCliente(Integer.parseInt(query),1,dbHelper);
+                if (query.length() == 14){
+                    cli = qh.selectCliente(query,1,dbHelper, 1);
                 }
                 else{
-                    cli = qh.selectCliente(Integer.parseInt(query),2,dbHelper);
+                    cli = qh.selectCliente(query,2,dbHelper, 1);
                 }
 
                 if (cli != null){
-                    fillFields(cli);
+                    fillFields(cli,true);
                 }
                 else{
-
+                    Toast.makeText(getApplicationContext(),"Cliente não encontrado!", Toast.LENGTH_SHORT).show();
+                    fillFields(cli,false);
                 }
 
                 return false;
@@ -92,7 +92,7 @@ public class ClienteActivity extends AppCompatActivity {
     }
 
 
-    public void fillFields(Cliente cli){
+    public void fillFields(Cliente cli, Boolean fill){
 
         TextView txtCodigo, txtRZ, txtCNPJ, txtEmail, txtLogr, txtNum, txtBair, txtCidade, txtUF, txtCEP, txtBanco, txtAg, txtConta, txtComplemento;
 
@@ -112,19 +112,38 @@ public class ClienteActivity extends AppCompatActivity {
         txtConta = findViewById(R.id.txtConta);
         txtComplemento = findViewById(R.id.txtComplemento);
 
-        txtCodigo.setText(cli.getCli_ID().toString());
-        txtRZ.setText(cli.getRazao_Social());
-        txtCNPJ.setText(cli.formatCNPJ(cli.getCNPJ()));
-        txtEmail.setText(cli.getEmail());
-        txtLogr.setText(cli.getCli_Complemento());
-        txtNum.setText(cli.getNum().toString());
-        txtBair.setText(cli.getBairro());
-        txtCidade.setText(cli.getCidade());
-        txtUF.setText(cli.getUF());
-        txtCEP.setText(cli.formatCEP(cli.getCep().toString()));
-        txtBanco.setText(cli.getBanco().toString());
-        txtAg.setText(cli.getAg().toString());
-        txtConta.setText(cli.getConta().toString());
-        txtComplemento.setText(cli.getCli_Complemento());
+        if (fill){
+            txtCodigo.setText(cli.getCli_ID().toString());
+            txtRZ.setText(cli.getRazao_Social());
+            txtCNPJ.setText(cli.formatCNPJ(cli.getCNPJ()));
+            txtEmail.setText(cli.getEmail());
+            txtLogr.setText(cli.getEndereco());
+            txtNum.setText(cli.getNum().toString());
+            txtBair.setText(cli.getBairro());
+            txtCidade.setText(cli.getCidade());
+            txtUF.setText(cli.getUF());
+            txtCEP.setText(cli.formatCEP(cli.getCep().toString()));
+            txtBanco.setText(cli.getBanco().toString());
+            txtAg.setText(cli.getAg().toString());
+            txtConta.setText(cli.getConta().toString());
+            txtComplemento.setText(cli.getCli_Complemento());
+        }
+        else{
+            txtCodigo.setText("--");
+            txtRZ.setText("---");
+            txtCNPJ.setText("---");
+            txtEmail.setText("---");
+            txtLogr.setText("---");
+            txtNum.setText("---");
+            txtBair.setText("---");
+            txtCidade.setText("---");
+            txtUF.setText("---");
+            txtCEP.setText("---");
+            txtBanco.setText("---");
+            txtAg.setText("---");
+            txtConta.setText("---");
+            txtComplemento.setText("---");
+        }
+
     }
 }

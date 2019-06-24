@@ -14,6 +14,10 @@ public class Usuario {
     public Usuario(Integer usr_Codigo) {
         this.usr_Codigo = usr_Codigo;
     }
+    public Usuario(String usr_Apelido, Integer usr_Senha){
+        this.usr_Apelido = usr_Apelido;
+        this.usr_Senha = usr_Senha;
+    }
 
     @Override
     public boolean equals(Object o) {

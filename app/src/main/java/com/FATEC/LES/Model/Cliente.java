@@ -6,6 +6,11 @@ public class Cliente extends Empresa{
     private Double cli_LimCred;
     private String cli_Complemento;
 
+    public Cliente(Integer id, String rz){
+        super(rz);
+        this.cli_ID = id;
+    }
+
     public Cliente(String CNPJ, String razao_Social, Integer banco, Integer ag, Integer conta, String cidade, String UF, String email, String Bairro, Integer Cep, Integer Num, String endereco, Integer cli_ID, Double cli_LimCred, String cli_Complemento) {
         super(CNPJ, razao_Social, banco, ag, conta, cidade, UF, email, Bairro, Cep, Num, endereco);
         this.cli_ID = cli_ID;

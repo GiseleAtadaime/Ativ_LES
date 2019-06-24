@@ -36,11 +36,12 @@
             android:layout_marginTop="36dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="botão para exibir cliente"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toStartOf="@+id/btnEmitente"
             app:layout_constraintHorizontal_bias="0.372"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtMenu"
-            app:srcCompat="@drawable/baseline_assignment_ind_black_36" />
+            app:srcCompat="@drawable/clients" />
 
         <ImageButton
             android:id="@+id/btnEmitente"
@@ -49,9 +50,10 @@
             android:layout_marginTop="36dp"
             android:layout_marginEnd="28dp"
             android:contentDescription="Botão para exibir emitente"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtMenu"
-            app:srcCompat="@drawable/baseline_assignment_ind_black_36" />
+            app:srcCompat="@drawable/emitente" />
 
         <ImageButton
             android:id="@+id/btnDuplicata"
@@ -61,11 +63,12 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="botão para exibir duplicata"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toStartOf="@+id/btnResumo"
             app:layout_constraintHorizontal_bias="0.373"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnCliente"
-            app:srcCompat="@drawable/baseline_assignment_ind_black_36" />
+            app:srcCompat="@drawable/duplicatas" />
 
         <ImageButton
             android:id="@+id/btnResumo"
@@ -74,9 +77,10 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="28dp"
             android:contentDescription="botão para exibir resumo"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnEmitente"
-            app:srcCompat="@drawable/baseline_assignment_ind_black_36" />
+            app:srcCompat="@drawable/resu" />
 
         <ImageButton
             android:id="@+id/btnLogOut"
@@ -86,11 +90,12 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="botão para logout"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.614"
             app:layout_constraintStart_toEndOf="@+id/imgLogoMenu"
             app:layout_constraintTop_toTopOf="@+id/imgLogoMenu"
-            app:srcCompat="@drawable/baseline_assignment_ind_black_36" />
+            app:srcCompat="@drawable/log_out" />
 
         <ImageView
             android:id="@+id/imgLogoMenu"

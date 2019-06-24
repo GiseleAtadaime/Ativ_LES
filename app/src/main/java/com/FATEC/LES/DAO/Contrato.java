@@ -73,6 +73,7 @@ public final class Contrato {
         public static final String STATUS_ABERTO = "A";
         public static final String STATUS_FECHADO = "F";
         public static final String STATUS_VENCIDO = "V";
+        public static final String STATUS_CANCELADO = "C";
 
     }
 
@@ -93,6 +94,7 @@ public final class Contrato {
         public static final String STATUS_ABERTO = "A";
         public static final String STATUS_PAGO = "P";
         public static final String STATUS_VENCIDO = "V";
+        public static final String STATUS_CANCELADO = "C";
 
     }
 
